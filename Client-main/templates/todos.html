@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciamento de Usuários</title>
+  <!-- Adicione links para estilos CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<body>
+  <div class="container">
+    <h1>Gerenciamento de Usuários</h1>
+    <div class="users-list">
+      <h2>Lista de Usuários</h2>
+      <ul id="users-list"></ul>
+    </div>
+
+    <div class="user-details">
+      <!-- Exibir detalhes do usuário selecionado -->
+      <h2>Detalhes do Usuário</h2>
+      <p id="user-details"></p>
+    </div>
+
+    <div class="user-form">
+      <!-- Formulário para criação/atualização de usuários -->
+      <h2>Adicionar/Editar Usuário</h2>
+      <form id="user-form">
+        <!-- Adicione campos do formulário conforme necessário -->
+        <input type="text" id="user-name" placeholder="Nome" required>
+        <input type="email" id="user-email" placeholder="Email" required>
+        <!-- ... Outros campos ... -->
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+
+    <div class="buttons">
+      <!-- Botões para executar ações CRUD -->
+      <button onclick="listUsers()">Listar Usuários</button>
+      <button onclick="createUser()">Criar Usuário</button>
+      <button onclick="updateUser()">Atualizar Usuário</button>
+      <button onclick="deleteUser()">Deletar Usuário</button>
+    </div>
+  </div>
+
+  <!-- Adicione scripts JavaScript -->
+  <script>
+    fetch('/users')
+    .then(response => response.json())
+    .then(users => {
+  });
+
+    function listUsers() {
+     fetch(`/user/${user_id}`)
+     .then(response => response.json())
+     .then(user => {
+  });
+    }
+
+    function createUser() {
+     fetch('/user/create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+        })
+        .then(response => {
+            // Verificar a resposta para ver se a criação foi bem-sucedida
+            // Atualizar a interface conforme necessário
+        });}
+
+    function updateUser() {
+     fetch(`/user/${user_id}/update`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedUserData),
+        })
+        .then(response => {
+            // Verificar a resposta para ver se a atualização foi bem-sucedida
+            // Atualizar a interface conforme necessário
+        });
+            }
+
+    function deleteUser() {
+     fetch(`/user/${user_id}/delete`, {
+        method: 'DELETE',
+        })
+        .then(response => {
+            // Verificar a resposta para ver se a exclusão foi bem-sucedida
+            // Atualizar a interface conforme necessário
+        });
+            }
+  </script>
+</body>
+</html>
